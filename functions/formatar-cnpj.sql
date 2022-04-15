@@ -8,11 +8,8 @@ DETERMINISTIC
 BEGIN
 	declare num varchar(30);
 
-	set num = replace(trim(numero), '/', '');
-	set num = replace(num, '-', '');
-	set num = replace(num, '.', '');
-	set num = replace(num, ' ', '');
-
+	set num = REGEXP_REPLACE(numero, '[^0-9]+', '');
+	
 	if (num = '') then
 		return null;
 	end if;
